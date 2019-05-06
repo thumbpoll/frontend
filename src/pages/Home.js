@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import Menu from "../components/HomeMenu";
+import MenuHome from "../components/HomeMenu";
 
 class Home extends Component {
   render() {
     return (
       <div>
-        <Menu />
+        <MenuHome />
       </div>
     );
   }

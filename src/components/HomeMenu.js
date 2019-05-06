@@ -1,9 +1,10 @@
+import React from "react";
 import { Menu, Icon } from "antd";
 
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
 
-class Menu extends React.Component {
+class MenuHome extends React.Component {
   state = {
     current: "mail"
   };
@@ -61,4 +62,4 @@ class Menu extends React.Component {
   }
 }
 
-export default Menu;
+export default MenuHome;
