@@ -1,7 +1,7 @@
 import React from "react";
 import { Menu } from "antd";
 
-class MenuHome extends React.Component {
+class NavbarMenu extends React.Component {
   state = {
     current: "mail"
   };
@@ -29,4 +29,4 @@ class MenuHome extends React.Component {
   }
 }
 
-export default MenuHome;
+export default NavbarMenu;
