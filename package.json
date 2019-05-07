@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emotion/core": "10.0.10",
+    "@emotion/styled": "10.0.10",
     "antd": "3.17.0",
     "babel-plugin-import": "1.11.0",
     "customize-cra": "0.2.12",
