@@ -1,40 +1,43 @@
+import Connect from "../assets/images/connect.png";
 import Logo from "../assets/logos/thumbpoll-logo.png";
 import React, { Component } from "react";
 import { Layout } from "antd";
-import MenuHome from "../components/HomeMenu";
-import RideThumb from "../assets/images/ride-thumb.png";
-const { Content, Footer } = Layout;
+import NavbarMenu from "../components/Navbar";
+import Jumbotron from "../components/AntdJumbotron";
+import FooterContent from "../components/FooterContent";
+const { Footer } = Layout;
 
 class Home extends Component {
   render() {
     return (
-      <div style={{ width: 480, margin: "0 auto", backgroundColor: "#75C4FF" }}>
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
-          <img src={Logo} alt="logo" style={{ width: 158, height: 59 }} />
-          <MenuHome />
-        </div>
-        <Content
+      <div>
+        <div
           style={{
-            backgroundColor: "#75C4FF",
-            minHeight: 30,
-            display: "flex",
-            justifyContent: " space-between",
-            alignItems: "center",
-            padding: "10px 10px"
+            width: 480,
+            margin: "0 auto",
+            backgroundColor: "#75C4FF"
           }}
         >
-          <h1 style={{ color: "white" }}>
-            Let's poll <br /> with our thumb
-          </h1>
-          <img
-            src={RideThumb}
-            alt="ride-thumb"
-            style={{ width: "219px", height: "187px", right: "0" }}
-          />
-        </Content>
-        <Footer style={{ textAlign: "center" }}>
-          Ant Design ©2018 Created by Ant UED
-        </Footer>
+          <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <img src={Logo} alt="logo" style={{ width: 158, height: 59 }} />
+            <NavbarMenu />
+          </div>
+          <Jumbotron />
+        </div>
+        <div
+          style={{
+            width: 480,
+            margin: "0 auto"
+          }}
+        >
+          <h3 style={{ textAlign: "center", margin: "10px 0" }}>
+            Why poll with Thumbpoll ?
+          </h3>
+          <div>{/* <img src={`/images/connect.png`} alt="connect" /> */}</div>
+          <Footer style={{ textAlign: "center", fontSize: "11px" }}>
+            <FooterContent />
+          </Footer>
+        </div>
       </div>
     );
   }
