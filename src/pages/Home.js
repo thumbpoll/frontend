@@ -3,8 +3,8 @@ import Logo from "../assets/logos/thumbpoll-logo.png";
 import { Layout } from "antd";
 import NavbarMenu from "../components/Navbar";
 import Jumbotron from "../components/AntdJumbotron";
-import Connect from "../assets/images/connect.png";
 import FooterContent from "../components/FooterContent";
+import Articles from "../components/ArticleWhyPollWithUs";
 const { Footer } = Layout;
 
 class Home extends Component {
@@ -19,7 +19,11 @@ class Home extends Component {
           }}
         >
           <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <img src={Logo} alt="logo" style={{ width: 158, height: 59 }} />
+            <img
+              src={Logo}
+              alt="logo"
+              style={{ width: "auto", height: 59, marginLeft: "10px" }}
+            />
             <NavbarMenu />
           </div>
           <Jumbotron />
@@ -30,30 +34,10 @@ class Home extends Component {
             margin: "0 auto"
           }}
         >
-          <h3 style={{ textAlign: "center", margin: "10px 0" }}>
+          <h3 style={{ textAlign: "center", margin: "25px 0" }}>
             Why poll with Thumbpoll?
           </h3>
-          <div
-            style={{
-              padding: "10px 25px",
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              marginTop: "20px",
-              marginBottom: "20px"
-            }}
-          >
-            <h4>
-              Poll with everyone, every time,
-              <br /> and everywhere around the <br />
-              World
-            </h4>
-            <img
-              src={Connect}
-              alt="connect"
-              style={{ width: "197px", height: "145px" }}
-            />
-          </div>
+          <Articles />
           <Footer style={{ textAlign: "center", fontSize: "11px" }}>
             <FooterContent />
           </Footer>
