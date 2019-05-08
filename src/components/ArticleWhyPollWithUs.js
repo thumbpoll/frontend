@@ -29,7 +29,7 @@ const article = [
   }
 ];
 
-class Articles extends Component {
+class ArticlesUs extends Component {
   render() {
     return article.map((article, index) => {
       return index % 2 === 0 ? (
@@ -47,7 +47,7 @@ class Articles extends Component {
           <h4 style={{ padding: "25px 25px" }}>{article.title}</h4>
           <img
             src={article.image}
-            alt="connect"
+            alt="poll-with-us"
             style={{ width: "auto", height: "165px" }}
           />
         </div>
@@ -65,7 +65,7 @@ class Articles extends Component {
         >
           <img
             src={article.image}
-            alt="connect"
+            alt="poll-with-us"
             style={{ width: "auto", height: "165px" }}
           />
           <h4 style={{ padding: "25px 25px" }}>{article.title}</h4>
@@ -75,4 +75,4 @@ class Articles extends Component {
   }
 }
 
-export default Articles;
+export default ArticlesUs;

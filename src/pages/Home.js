@@ -4,7 +4,8 @@ import { Layout } from "antd";
 import NavbarMenu from "../components/Navbar";
 import Jumbotron from "../components/AntdJumbotron";
 import FooterContent from "../components/FooterContent";
-import Articles from "../components/ArticleWhyPollWithUs";
+import ArticlesUs from "../components/ArticleWhyPollWithUs";
+import ArticlesWorks from "../components/ArticleHowWeWorks";
 const { Footer } = Layout;
 
 class Home extends Component {
@@ -37,8 +38,20 @@ class Home extends Component {
           <h3 style={{ textAlign: "center", margin: "25px 0" }}>
             Why poll with Thumbpoll?
           </h3>
-          <Articles />
-          <Footer style={{ textAlign: "center", fontSize: "11px" }}>
+          <ArticlesUs />
+          <div style={{ backgroundColor: "#F5F5F5" }}>
+            <h3 style={{ textAlign: "center", padding: "25px 0" }}>
+              How’s Thumbpoll work?
+            </h3>
+            <ArticlesWorks />
+          </div>
+          <Footer
+            style={{
+              textAlign: "center",
+              fontSize: "11px",
+              backgroundColor: "#c4c4c4"
+            }}
+          >
             <FooterContent />
           </Footer>
         </div>
