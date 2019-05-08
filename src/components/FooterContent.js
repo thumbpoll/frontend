@@ -31,11 +31,19 @@ const links = [
 ];
 
 const language = languages.map(language => {
-  return <span style={{ margin: "5px", color: "#000" }}>{language}</span>;
+  return (
+    <span style={{ margin: "5px", color: "#000" }} key={language}>
+      {language}
+    </span>
+  );
 });
 
 const link = links.map(link => {
-  return <span style={{ margin: "5px", color: "#000" }}>{link}</span>;
+  return (
+    <span style={{ margin: "5px", color: "#000" }} key={link}>
+      {link}
+    </span>
+  );
 });
 export default class FooterContent extends Component {
   render() {
