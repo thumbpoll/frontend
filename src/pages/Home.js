@@ -1,4 +1,4 @@
-import Connect from "../assets/images/connect.png";
+// import Connect from "../assets/images/connect.png";
 import Logo from "../assets/logos/thumbpoll-logo.png";
 import React, { Component } from "react";
 import { Layout } from "antd";
