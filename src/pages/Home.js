@@ -1,9 +1,9 @@
-import Connect from "../assets/images/connect.png";
-import Logo from "../assets/logos/thumbpoll-logo.png";
 import React, { Component } from "react";
+import Logo from "../assets/logos/thumbpoll-logo.png";
 import { Layout } from "antd";
 import NavbarMenu from "../components/Navbar";
 import Jumbotron from "../components/AntdJumbotron";
+import Connect from "../assets/images/connect.png";
 import FooterContent from "../components/FooterContent";
 const { Footer } = Layout;
 
@@ -31,9 +31,29 @@ class Home extends Component {
           }}
         >
           <h3 style={{ textAlign: "center", margin: "10px 0" }}>
-            Why poll with Thumbpoll ?
+            Why poll with Thumbpoll?
           </h3>
-          <div>{/* <img src={`/images/connect.png`} alt="connect" /> */}</div>
+          <div
+            style={{
+              padding: "10px 25px",
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              marginTop: "20px",
+              marginBottom: "20px"
+            }}
+          >
+            <h4>
+              Poll with everyone, every time,
+              <br /> and everywhere around the <br />
+              World
+            </h4>
+            <img
+              src={Connect}
+              alt="connect"
+              style={{ width: "197px", height: "145px" }}
+            />
+          </div>
           <Footer style={{ textAlign: "center", fontSize: "11px" }}>
             <FooterContent />
           </Footer>
