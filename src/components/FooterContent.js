@@ -55,7 +55,9 @@ export default class FooterContent extends Component {
         {link}
         <br />
         <br />
-        <span style={{ color: "#000" }}>Thumbpoll © 2019</span>
+        <span style={{ color: "#000", fontWeight: "600" }}>
+          Thumbpoll © 2019
+        </span>
       </div>
     );
   }
