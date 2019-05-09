@@ -2,12 +2,12 @@ import React from "react";
 // import Logo from "../assets/logos/thumbpoll-logo.png";
 import LogoMini from "../../assets/logos/thumbpoll-logo-mini.png";
 import NavbarDashboard from "../../components/dashboard/NavbarAfterLogin";
-import PollModal from "../../components/dashboard/ModalCreatePoll";
 import { Layout, Menu, Empty, Icon } from "antd";
+import PollTable from "../../components/dashboard/PollTables";
 
 const { Header, Content, Footer, Sider } = Layout;
 
-class Dashboard extends React.Component {
+class Poll extends React.Component {
   state = {
     collapsed: true
   };
@@ -57,9 +57,9 @@ class Dashboard extends React.Component {
               <NavbarDashboard />
             </Header>
             <Content style={{ margin: "0 16px", paddingTop: "15px" }}>
-              <div
-                style={{ padding: 24, background: "#fff", minHeight: 360 }}
-              />
+              <div style={{ padding: 24, background: "#fff", minHeight: 360 }}>
+                <PollTable />
+              </div>
             </Content>
             <Footer style={{ textAlign: "center" }}>Thumbpoll © 2019</Footer>
           </Layout>
@@ -69,4 +69,4 @@ class Dashboard extends React.Component {
   }
 }
 
-export default Dashboard;
+export default Poll;
