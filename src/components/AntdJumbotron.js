@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import RideThumb from "../assets/images/ride-thumb.png";
 import { Button } from "antd";
 import { Layout } from "antd";
+import { Link } from "react-router-dom";
+
 const { Content } = Layout;
 
 class Jumbotron extends Component {
@@ -34,15 +36,17 @@ class Jumbotron extends Component {
               style={{ width: "219px", height: "187px", right: "0" }}
             />
           </div>
-          <Button
-            type="primary"
-            style={{
-              backgroundColor: "#71C379",
-              marginBottom: "15px"
-            }}
-          >
-            Get Started
-          </Button>
+          <Link to="/login">
+            <Button
+              type="primary"
+              style={{
+                backgroundColor: "#71C379",
+                marginBottom: "15px"
+              }}
+            >
+              Get Started
+            </Button>
+          </Link>
         </Content>
       </div>
     );

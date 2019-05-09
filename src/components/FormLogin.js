@@ -3,7 +3,9 @@ import { Form, Icon, Input, Button, Checkbox } from "antd";
 
 class NormalLoginForm extends React.Component {
   state = {
-    size: "large"
+    size: "large",
+    email: "",
+    password: ""
   };
 
   handleSubmit = e => {
@@ -15,18 +17,29 @@ class NormalLoginForm extends React.Component {
     });
   };
 
+  handleChange = e => {
+    this.setState(
+      {
+        [e.target.name]: e.target.value
+      }
+      // console.log(this.state)
+    );
+  };
+
   render() {
     const size = this.state.size;
     const { getFieldDecorator } = this.props.form;
     return (
       <Form onSubmit={this.handleSubmit} className="login-form">
         <Form.Item>
-          {getFieldDecorator("username", {
-            rules: [{ required: true, message: "Please input your username!" }]
+          {getFieldDecorator("email", {
+            rules: [{ required: true, message: "Please input your email!" }]
           })(
             <Input
-              prefix={<Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />}
-              placeholder="Username"
+              prefix={<Icon type="mail" style={{ color: "rgba(0,0,0,.25)" }} />}
+              placeholder="Email"
+              name="email"
+              onChange={this.handleChange}
             />
           )}
         </Form.Item>
@@ -38,6 +51,8 @@ class NormalLoginForm extends React.Component {
               prefix={<Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} />}
               type="password"
               placeholder="Password"
+              name="password"
+              onChange={this.handleChange}
             />
           )}
         </Form.Item>
