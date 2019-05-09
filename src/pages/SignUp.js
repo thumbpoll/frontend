@@ -45,7 +45,7 @@ export class SignUp extends Component {
               }}
             >
               <p style={{ marginBottom: 0 }}>
-                Click “Login” above to accept Thumbpoll’s
+                By signing up, you agree to Thumbpoll’s
               </p>
               <p>
                 <b>Terms of Service & Privacy Policy.</b>
