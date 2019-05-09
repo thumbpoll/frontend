@@ -1,5 +1,6 @@
 import React from "react";
 import { Menu, Avatar } from "antd";
+import { Link } from "react-router-dom";
 
 class NavbarDashboard extends React.Component {
   state = {
@@ -21,7 +22,9 @@ class NavbarDashboard extends React.Component {
           selectedKeys={[this.state.current]}
           mode="horizontal"
         >
-          <Menu.Item key="polls">Polls</Menu.Item>
+          <Menu.Item key="polls">
+            <Link to="/poll">Polls</Link>
+          </Menu.Item>
           <Menu.Item key="participants">Participants</Menu.Item>
           <Menu.Item key="results">
             <a
