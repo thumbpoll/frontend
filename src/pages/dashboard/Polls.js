@@ -2,7 +2,7 @@ import React from "react";
 // import Logo from "../assets/logos/thumbpoll-logo.png";
 import LogoMini from "../../assets/logos/thumbpoll-logo-mini.png";
 import NavbarDashboard from "../../components/dashboard/NavbarAfterLogin";
-import { Layout, Menu, Empty, Icon } from "antd";
+import { Layout, Menu, Icon } from "antd";
 import PollTable from "../../components/dashboard/PollTables";
 
 const { Header, Content, Footer, Sider } = Layout;
