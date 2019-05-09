@@ -1,7 +1,7 @@
 import React from "react";
-import Image1 from "../assets/images/question.png";
-import Image2 from "../assets/images/response.png";
-import Image3 from "../assets/images/instant-result.png";
+import Image1 from "../../assets/images/question.png";
+import Image2 from "../../assets/images/response.png";
+import Image3 from "../../assets/images/instant-result.png";
 
 const articles = [
   {

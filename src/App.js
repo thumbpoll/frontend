@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import SignUp from "./pages/SignUp";
-import Dashboard from "./pages/AfterLogin";
+import Home from "./pages/home/Home";
+import Login from "./pages/home/Login";
+import SignUp from "./pages/home/SignUp";
+import Dashboard from "./pages/dashboard/AfterLogin";
 
 class App extends Component {
   render() {

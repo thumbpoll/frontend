@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import RideThumb from "../assets/images/ride-thumb.png";
+import RideThumb from "../../assets/images/ride-thumb.png";
 import { Button } from "antd";
 import { Layout } from "antd";
 import { Link } from "react-router-dom";

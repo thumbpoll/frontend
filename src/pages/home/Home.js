@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import Logo from "../assets/logos/thumbpoll-logo.png";
+import Logo from "../../assets/logos/thumbpoll-logo.png";
 import { Layout } from "antd";
-import NavbarMenu from "../components/Navbar";
-import Jumbotron from "../components/AntdJumbotron";
-import FooterContent from "../components/FooterContent";
-import ArticlesUs from "../components/ArticleWhyPollWithUs";
-import ArticlesWorks from "../components/ArticleHowWeWorks";
+import NavbarMenu from "../../components/home/Navbar";
+import Jumbotron from "../../components/home/AntdJumbotron";
+import FooterContent from "../../components/home/FooterContent";
+import ArticlesUs from "../../components/home/ArticleWhyPollWithUs";
+import ArticlesWorks from "../../components/home/ArticleHowWeWorks";
 const { Footer } = Layout;
 
 class Home extends Component {

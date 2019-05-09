@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import Image1 from "../assets/images/connect.png";
-import Image2 from "../assets/images/accessible.png";
-import Image3 from "../assets/images/help.png";
-import Image4 from "../assets/images/deal.png";
-import Image5 from "../assets/images/result.png";
+import Image1 from "../../assets/images/connect.png";
+import Image2 from "../../assets/images/accessible.png";
+import Image3 from "../../assets/images/help.png";
+import Image4 from "../../assets/images/deal.png";
+import Image5 from "../../assets/images/result.png";
 
 const article = [
   {

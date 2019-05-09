@@ -1,15 +1,14 @@
 import React, { Component } from "react";
-import WrappedNormalLoginForm from "../components/FormLogin";
-import SignWith from "../components/SignWith";
-import Logo from "../assets/logos/thumbpoll-logo.png";
+import SignWith from "../../components/home/SignWith";
+import WrappedRegistrationForm from "../../components/home/FormSignUp";
+import Logo from "../../assets/logos/thumbpoll-logo.png";
 import { Button, Form } from "antd";
 import { Link } from "react-router-dom";
 
-export class Login extends Component {
+export class SignUp extends Component {
   state = {
     size: "large"
   };
-
   render() {
     const size = this.state.size;
     return (
@@ -35,7 +34,7 @@ export class Login extends Component {
             </Link>
             <h1>Let’s poll with our thumb</h1>
             <div>
-              <WrappedNormalLoginForm />
+              <WrappedRegistrationForm />
             </div>
             <div
               style={{
@@ -46,7 +45,7 @@ export class Login extends Component {
               }}
             >
               <p style={{ marginBottom: 0 }}>
-                Click “Login” above to accept Thumbpoll’s
+                By signing up, you agree to Thumbpoll’s
               </p>
               <p>
                 <b>Terms of Service & Privacy Policy.</b>
@@ -75,4 +74,4 @@ export class Login extends Component {
   }
 }
 
-export default Login;
+export default SignUp;

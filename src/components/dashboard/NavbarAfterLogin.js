@@ -3,7 +3,7 @@ import { Menu, Avatar } from "antd";
 
 class NavbarDashboard extends React.Component {
   state = {
-    current: "polls"
+    current: ""
   };
 
   handleClick = e => {
