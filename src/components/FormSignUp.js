@@ -17,7 +17,6 @@ class RegistrationForm extends React.Component {
   state = {
     confirmDirty: false,
     yourName: "",
-    userName: "",
     email: "",
     password: "",
     confirmPassword: ""
@@ -111,22 +110,6 @@ class RegistrationForm extends React.Component {
                 }
                 placeholder="Your Name"
                 name="yourName"
-                onChange={this.handleChange}
-              />
-            )}
-          </Form.Item>
-          <Form.Item style={styles.form}>
-            {getFieldDecorator("user", {
-              rules: [
-                { required: true, message: "Please input your User Name!" }
-              ]
-            })(
-              <Input
-                prefix={
-                  <Icon type="user-add" style={{ color: "rgba(0,0,0,.25)" }} />
-                }
-                placeholder="User Name"
-                name="userName"
                 onChange={this.handleChange}
               />
             )}
