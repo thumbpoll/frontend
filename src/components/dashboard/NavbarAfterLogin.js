@@ -25,15 +25,11 @@ class NavbarDashboard extends React.Component {
           <Menu.Item key="polls">
             <Link to="/poll">Polls</Link>
           </Menu.Item>
-          <Menu.Item key="participants">Participants</Menu.Item>
+          <Menu.Item key="participants">
+            <Link to="/participants">Participants</Link>
+          </Menu.Item>
           <Menu.Item key="results">
-            <a
-              href="https://ant.design"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Results
-            </a>
+            <Link to="/results">Results</Link>
           </Menu.Item>
         </Menu>
         <Avatar
