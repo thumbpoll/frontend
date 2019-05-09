@@ -82,7 +82,7 @@ const CreatePollForm = Form.create({ name: "form_in_modal" })(
           ) : null}
         </Form.Item>
       ));
-      const { visible, onCancel, onCreate, form } = this.props;
+      const { visible, onCancel, onCreate } = this.props;
 
       return (
         <Modal
