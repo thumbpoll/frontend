@@ -1,8 +1,9 @@
 import React from "react";
-import Logo from "../assets/logos/thumbpoll-logo.png";
+// import Logo from "../assets/logos/thumbpoll-logo.png";
 import LogoMini from "../assets/logos/thumbpoll-logo-mini.png";
 import NavbarDashboard from "../components/NavbarAfterLogin";
-import { Layout, Menu, Empty, Icon, Button } from "antd";
+import PollModal from "../components/ModalCreatePoll";
+import { Layout, Menu, Empty, Icon } from "antd";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -63,9 +64,8 @@ class Dashboard extends React.Component {
                     height: 60
                   }}
                 >
-                  <Button type="primary">Create a Poll Now</Button>
+                  <PollModal />
                 </Empty>
-                ,
               </div>
             </Content>
             <Footer style={{ textAlign: "center" }}>Thumbpoll © 2019</Footer>
