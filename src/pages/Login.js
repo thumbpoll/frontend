@@ -3,6 +3,7 @@ import WrappedNormalLoginForm from "../components/FormLogin";
 import SignWith from "../components/SignWith";
 import Logo from "../assets/logos/thumbpoll-logo.png";
 import { Button, Form } from "antd";
+import { Link } from "react-router-dom";
 
 export class Login extends Component {
   state = {
@@ -29,7 +30,9 @@ export class Login extends Component {
               alignItems: "center"
             }}
           >
-            <img src={Logo} alt="logo" style={{ width: 300, height: 100 }} />
+            <Link to="/">
+              <img src={Logo} alt="logo" style={{ width: 300, height: 100 }} />
+            </Link>
             <h1>Let’s poll with our thumb</h1>
             <div>
               <WrappedNormalLoginForm />
