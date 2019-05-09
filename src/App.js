@@ -6,6 +6,8 @@ import Login from "./pages/home/Login";
 import SignUp from "./pages/home/SignUp";
 import Dashboard from "./pages/dashboard/AfterLogin";
 import Poll from "./pages/dashboard/Polls";
+import Participant from "./pages/dashboard/Participants";
+import PollResult from "./pages/dashboard/Result";
 
 class App extends Component {
   render() {
@@ -17,6 +19,8 @@ class App extends Component {
           <Route path="/signup" component={SignUp} />
           <Route path="/dashboard" component={Dashboard} />
           <Route path="/poll" component={Poll} />
+          <Route path="/participants" component={Participant} />
+          <Route path="/results" component={PollResult} />
         </Switch>
       </Router>
     );
