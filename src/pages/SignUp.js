@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import SignWith from "../components/SignWith";
+import WrappedRegistrationForm from "../components/FormSignUp";
 import Logo from "../assets/logos/thumbpoll-logo.png";
 import { Button, Form } from "antd";
 import { Link } from "react-router-dom";
@@ -32,7 +33,9 @@ export class SignUp extends Component {
               <img src={Logo} alt="logo" style={{ width: 300, height: 100 }} />
             </Link>
             <h1>Let’s poll with our thumb</h1>
-            <div>{/* <WrappedNormalLoginForm /> */}</div>
+            <div>
+              <WrappedRegistrationForm />
+            </div>
             <div
               style={{
                 display: "flex",
