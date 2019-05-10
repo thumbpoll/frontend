@@ -54,17 +54,19 @@ export class Login extends Component {
             </div>
             <div>
               <Form>
-                <Button
-                  type="primary"
-                  htmlType="submit"
-                  className="login-form-button"
-                  shape="round"
-                  value="large"
-                  size={size}
-                  ghost
-                >
-                  No account? Create one
-                </Button>
+                <Link to="/signup">
+                  <Button
+                    type="primary"
+                    htmlType="submit"
+                    className="login-form-button"
+                    shape="round"
+                    value="large"
+                    size={size}
+                    ghost
+                  >
+                    No account? Create one
+                  </Button>
+                </Link>
               </Form>
             </div>
             <SignWith />
