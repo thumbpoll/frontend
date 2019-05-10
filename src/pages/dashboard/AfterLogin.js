@@ -4,6 +4,7 @@ import LogoMini from "../../assets/logos/thumbpoll-logo-mini.png";
 import NavbarDashboard from "../../components/dashboard/NavbarAfterLogin";
 import PollModal from "../../components/dashboard/ModalCreatePoll";
 import { Layout, Menu, Empty, Icon } from "antd";
+import { Link } from "react-router-dom";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -43,12 +44,16 @@ class Dashboard extends React.Component {
             </div>
             <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
               <Menu.Item key="1">
-                <Icon type="edit" />
-                <span>Create Poll</span>
+                <Link to="/dashboard">
+                  <Icon type="edit" />
+                  <span>Create Poll</span>
+                </Link>
               </Menu.Item>
               <Menu.Item key="2">
-                <Icon type="file" />
-                <span>Import</span>
+                <Link to="/">
+                  <Icon type="file" />
+                  <span>Import</span>
+                </Link>
               </Menu.Item>
             </Menu>
           </Sider>
