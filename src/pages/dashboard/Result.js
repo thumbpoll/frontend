@@ -2,6 +2,7 @@ import React from "react";
 // import Logo from "../assets/logos/thumbpoll-logo.png";
 import LogoMini from "../../assets/logos/thumbpoll-logo-mini.png";
 import NavbarDashboard from "../../components/dashboard/NavbarAfterLogin";
+import ResultCollapse from "../../components/dashboard/Collapse";
 import { Layout, Menu, Icon } from "antd";
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -56,7 +57,9 @@ class PollResult extends React.Component {
               <NavbarDashboard />
             </Header>
             <Content style={{ margin: "0 16px", paddingTop: "15px" }}>
-              <div style={{ background: "#fff", minHeight: 360 }} />
+              <div style={{ background: "#fff", minHeight: 360 }}>
+                <ResultCollapse />
+              </div>
             </Content>
             <Footer style={{ textAlign: "center" }}>Thumbpoll © 2019</Footer>
           </Layout>
