@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import SignWith from "../../components/home/SignWith";
 import WrappedRegistrationForm from "../../components/home/FormSignUp";
 import Logo from "../../assets/logos/thumbpoll-logo.png";
-import { Button, Form } from "antd";
 import { Link } from "react-router-dom";
 
 export class SignUp extends Component {
@@ -10,7 +9,6 @@ export class SignUp extends Component {
     size: "large"
   };
   render() {
-    const size = this.state.size;
     return (
       <div>
         <div
@@ -51,21 +49,7 @@ export class SignUp extends Component {
                 <b>Terms of Service & Privacy Policy.</b>
               </p>
             </div>
-            <div>
-              <Form>
-                <Button
-                  type="primary"
-                  htmlType="submit"
-                  className="login-form-button"
-                  shape="round"
-                  value="large"
-                  size={size}
-                  ghost
-                >
-                  No account? Create one
-                </Button>
-              </Form>
-            </div>
+
             <SignWith />
           </div>
         </div>
