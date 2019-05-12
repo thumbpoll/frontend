@@ -40,7 +40,6 @@ class Jumbotron extends Component {
             <Button
               type="primary"
               style={{
-                backgroundColor: "#71C379",
                 marginBottom: "15px"
               }}
             >
