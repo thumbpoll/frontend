@@ -41,7 +41,7 @@ class PollTable extends React.Component {
   render() {
     return (
       <div>
-        <Table columns={columns} dataSource={data} />;
+        <Table columns={columns} dataSource={data} />
       </div>
     );
   }
