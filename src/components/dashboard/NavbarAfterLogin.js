@@ -1,5 +1,5 @@
 import React from "react";
-import { Menu, Avatar } from "antd";
+import { Menu, Avatar, Dropdown } from "antd";
 import { Link } from "react-router-dom";
 
 class NavbarDashboard extends React.Component {
@@ -15,6 +15,15 @@ class NavbarDashboard extends React.Component {
   };
 
   render() {
+    let menuAvatar = (
+      <Menu>
+        <Menu.Item key="0">Profile</Menu.Item>
+        <Menu.Divider />
+        <Menu.Item key="2">
+          <Link to="/">Log out</Link>
+        </Menu.Item>
+      </Menu>
+    );
     return (
       <div style={{ display: "flex", justifyContent: "space-between" }}>
         <Menu
@@ -32,10 +41,14 @@ class NavbarDashboard extends React.Component {
             <Link to="/results">Results</Link>
           </Menu.Item>
         </Menu>
-        <Avatar
-          style={{ backgroundColor: "#87d068", margin: "10px 10px" }}
-          icon="user"
-        />
+        <Dropdown overlay={menuAvatar} trigger={["click"]}>
+          <a className="ant-dropdown-link" href="#">
+            <Avatar
+              style={{ backgroundColor: "#87d068", margin: "10px 10px" }}
+              icon="user"
+            />
+          </a>
+        </Dropdown>
       </div>
     );
   }
