@@ -1,5 +1,5 @@
 import React from "react";
-// import Logo from "../assets/logos/thumbpoll-logo.png";
+// import Logo from "../../assets/logos/thumbpoll-logo.png";
 import LogoMini from "../../assets/logos/thumbpoll-logo-mini.png";
 import NavbarDashboard from "../../components/dashboard/NavbarAfterLogin";
 import PollModal from "../../components/dashboard/ModalCreatePoll";
