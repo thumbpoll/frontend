@@ -93,7 +93,7 @@ const CreatePollForm = Form.create({ name: "form_in_modal" })(
           onOk={onCreate}
           style={{ width: 480 }}
         >
-          <Form layout="vertical">
+          <div layout="vertical">
             <Form.Item label="Title">
               {getFieldDecorator("title", {
                 rules: [
@@ -126,7 +126,7 @@ const CreatePollForm = Form.create({ name: "form_in_modal" })(
                 </Radio.Group>
               )}
             </Form.Item>
-          </Form>
+          </div>
         </Modal>
       );
     }

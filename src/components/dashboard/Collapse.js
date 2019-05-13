@@ -3,7 +3,7 @@ import { Collapse, Icon, Progress, Statistic } from "antd";
 
 const Panel = Collapse.Panel;
 const Countdown = Statistic.Countdown;
-const deadline = Date.now() + 1 * 60 * 60 * 24 * 0 + 1000 * 30; // from right, minutes; seconds; days
+const deadline = Date.now() + 1 * 60 * 60 * 24 * 0 + 1000 * 10; // from right, minutes; seconds; days
 function onFinish() {
   console.log("finished!");
 }
