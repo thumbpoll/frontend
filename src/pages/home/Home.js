@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Logo from "../../assets/logos/thumbpoll-logo.png";
-import { Layout } from "antd";
+import { Layout, BackTop } from "antd";
 import NavbarMenu from "../../components/home/Navbar";
 import Jumbotron from "../../components/home/AntdJumbotron";
 import FooterContent from "../../components/home/FooterContent";
@@ -54,6 +54,9 @@ class Home extends Component {
           >
             <FooterContent />
           </Footer>
+          <div>
+            <BackTop style={{ opacity: 0.7 }} />
+          </div>
         </div>
       </div>
     );
