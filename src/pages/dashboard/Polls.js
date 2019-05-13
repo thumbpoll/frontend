@@ -5,6 +5,7 @@ import NavbarDashboard from "../../components/dashboard/NavbarAfterLogin";
 import { Layout, Menu, Icon } from "antd";
 import PollTable from "../../components/dashboard/PollTables";
 import { Link } from "react-router-dom";
+import ShowPoll from "../../components/dashboard/ModalShowPoll";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -62,6 +63,7 @@ class Poll extends React.Component {
             <Content style={{ margin: "0 16px", paddingTop: "15px" }}>
               <div style={{ padding: 24, background: "#fff", minHeight: 360 }}>
                 <PollTable />
+                <ShowPoll />
               </div>
             </Content>
             <Footer style={{ textAlign: "center" }}>Thumbpoll © 2019</Footer>
