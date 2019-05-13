@@ -1,5 +1,5 @@
 import React from "react";
-// import Logo from "../assets/logos/thumbpoll-logo.png";
+import Logo from "../../assets/logos/thumbpoll-logo.png";
 import LogoMini from "../../assets/logos/thumbpoll-logo-mini.png";
 import NavbarDashboard from "../../components/dashboard/NavbarAfterLogin";
 import ResultCollapse from "../../components/dashboard/Collapse";
@@ -32,15 +32,27 @@ class PollResult extends React.Component {
             onCollapse={this.onCollapse}
           >
             <div className="logo" style={{ height: "60px" }}>
-              <img
-                src={LogoMini}
-                alt="Logo"
-                style={{
-                  height: "60px",
-                  width: "auto",
-                  margin: "5px 10px"
-                }}
-              />
+              {this.state.collapsed ? (
+                <img
+                  src={LogoMini}
+                  alt="Logo"
+                  style={{
+                    height: "60px",
+                    width: "auto",
+                    margin: "5px 10px"
+                  }}
+                />
+              ) : (
+                <img
+                  src={Logo}
+                  alt="Logo"
+                  style={{
+                    height: "60px",
+                    width: "auto",
+                    margin: "5px 10px 0 20px"
+                  }}
+                />
+              )}
             </div>
             <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
               <Menu.Item key="1">
