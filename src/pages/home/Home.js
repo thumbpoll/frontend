@@ -35,7 +35,7 @@ class Home extends Component {
             margin: "0 auto"
           }}
         >
-          <h3 style={{ textAlign: "center", margin: "25px 0" }}>
+          <h3 id="about" style={{ textAlign: "center", margin: "25px 0" }}>
             Why poll with Thumbpoll?
           </h3>
           <ArticlesUs />
