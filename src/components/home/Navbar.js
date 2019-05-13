@@ -22,7 +22,9 @@ class NavbarMenu extends React.Component {
         mode="horizontal"
         style={{ backgroundColor: "#75C4FF", color: "#fff" }}
       >
-        <Menu.Item key="about">About us</Menu.Item>
+        <Menu.Item key="about">
+          <a href="#about">About us</a>
+        </Menu.Item>
         <Menu.Item key="login">
           <Link to="/login">Login</Link>
         </Menu.Item>
