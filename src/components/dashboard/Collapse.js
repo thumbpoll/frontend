@@ -8,6 +8,18 @@ function onFinish() {
   console.log("finished!");
 }
 
+const CountdownRunning = () => {
+  return <Countdown title="Times left" value={deadline} onFinish={onFinish} />;
+};
+
+const CountdownFinish = () => {
+  return <Progress type="circle" percent={100} format={() => "Done"} />;
+};
+
+const CountdownTernary = () => {
+  return onFinish ? <CountdownRunning /> : <CountdownFinish />;
+};
+
 const text = (
   <div>
     <span>Option 1</span> <Progress percent={30} status="active" />
@@ -38,11 +50,7 @@ class ResultCollapse extends React.Component {
           <Panel header="Poll 1" key="1" style={customPanelStyle}>
             <div>{text}</div>
             <br />
-            <Countdown
-              title="Times left"
-              value={deadline}
-              onFinish={onFinish}
-            />
+            <CountdownTernary isFinish={deadline} />
           </Panel>
           <Panel header="Poll 2" key="2" style={customPanelStyle}>
             <div>{text}</div>
@@ -51,6 +59,7 @@ class ResultCollapse extends React.Component {
               title="Times left"
               value={deadline}
               onFinish={onFinish}
+              isFinish={true}
             />
           </Panel>
           <Panel header="Poll 3" key="3" style={customPanelStyle}>
