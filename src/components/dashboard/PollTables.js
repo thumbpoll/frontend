@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Table, Divider, Modal, Radio } from "antd";
 import RadioGroup from "antd/lib/radio/group";
 
@@ -131,14 +131,15 @@ class PollTable extends React.Component {
         >
           <p>{this.state.data[this.state.activeIndex].poll}</p>
           <RadioGroup>
-            <Radio value={1}>
-              {this.state.data[this.state.activeIndex].option[0].description}
-            </Radio>
-            <br />
-            <br />
-            <Radio value={2}>
-              {this.state.data[this.state.activeIndex].option[1].description}
-            </Radio>
+            {this.state.data[this.state.activeIndex].option.map(
+              (data, index) => (
+                <Fragment key={index}>
+                  <Radio value={data.description}>{data.description}</Radio>
+                  <br />
+                  <br />
+                </Fragment>
+              )
+            )}
           </RadioGroup>
         </Modal>
       </div>
