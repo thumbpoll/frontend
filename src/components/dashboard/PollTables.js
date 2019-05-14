@@ -1,5 +1,6 @@
 import React from "react";
-import { Table, Divider, Modal } from "antd";
+import { Table, Divider, Modal, Radio } from "antd";
+import RadioGroup from "antd/lib/radio/group";
 
 const columns = [
   {
@@ -105,6 +106,7 @@ class PollTable extends React.Component {
       activeIndex: index
     });
   };
+
   render() {
     return (
       <div>
@@ -128,13 +130,16 @@ class PollTable extends React.Component {
           onCancel={this.handleCancel}
         >
           <p>{this.state.data[this.state.activeIndex].poll}</p>
-          <p>
-            {
-              this.state.data[this.state.activeIndex].option[
-                this.state.activeIndex
-              ].description
-            }
-          </p>
+          <RadioGroup>
+            <Radio value={1}>
+              {this.state.data[this.state.activeIndex].option[0].description}
+            </Radio>
+            <br />
+            <br />
+            <Radio value={2}>
+              {this.state.data[this.state.activeIndex].option[1].description}
+            </Radio>
+          </RadioGroup>
         </Modal>
       </div>
     );
