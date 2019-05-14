@@ -42,11 +42,39 @@ class PollTable extends React.Component {
       },
       {
         key: "2",
-        poll: "Poll 2"
+        poll: "Poll 2",
+        option: [
+          {
+            id: 1,
+            description: "option 1"
+          },
+          {
+            id: 2,
+            description: "option 2"
+          },
+          {
+            id: 3,
+            description: "option 3"
+          }
+        ]
       },
       {
         key: 3,
-        poll: "Poll 3"
+        poll: "Poll 3",
+        option: [
+          {
+            id: 1,
+            description: "option 1"
+          },
+          {
+            id: 2,
+            description: "option 2"
+          },
+          {
+            id: 3,
+            description: "option 3"
+          }
+        ]
       }
     ],
     activeIndex: 0
