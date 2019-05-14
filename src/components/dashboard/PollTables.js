@@ -7,16 +7,16 @@ const columns = [
     dataIndex: "poll",
     key: "poll",
     width: "65%",
-    render: text => <a href="">{text}</a>
+    render: text => <a href="#link">{text}</a>
   },
   {
     title: "Action",
     key: "action",
     render: (text, record) => (
       <span>
-        <a href="">Share</a>
+        <a href="#link">Share</a>
         <Divider type="vertical" />
-        <a href="">Edit</a>
+        <a href="#link">Edit</a>
       </span>
     )
   }

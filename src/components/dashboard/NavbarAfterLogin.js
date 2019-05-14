@@ -42,7 +42,7 @@ class NavbarDashboard extends React.Component {
           </Menu.Item>
         </Menu>
         <Dropdown overlay={menuAvatar} trigger={["click"]}>
-          <a className="ant-dropdown-link" href="#">
+          <a className="ant-dropdown-link" href="#link">
             <Avatar
               style={{ backgroundColor: "#87d068", margin: "10px 10px" }}
               icon="user"
