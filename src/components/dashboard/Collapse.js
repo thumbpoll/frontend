@@ -3,7 +3,8 @@ import { Collapse, Icon, Progress, Statistic } from "antd";
 
 const Panel = Collapse.Panel;
 const Countdown = Statistic.Countdown;
-const deadline = Date.now() + 1 * 60 * 60 * 24 * 0 + 1000 * 10; // from right, minutes; seconds; days
+const time = 1000 * 60 * 60 * 0 * 1 + 5000;
+const deadline = Date.now() + time;
 function onFinish() {
   console.log("finished!");
 }
@@ -16,9 +17,11 @@ const CountdownFinish = () => {
   return <Progress type="circle" percent={100} format={() => "Done"} />;
 };
 
-const CountdownTernary = () => {
-  return onFinish ? <CountdownRunning /> : <CountdownFinish />;
-};
+class CountdownTernary extends React.Component {
+  render() {
+    return time === onFinish ? <CountdownRunning /> : <CountdownFinish />;
+  }
+}
 
 const text = (
   <div>
@@ -50,6 +53,11 @@ class ResultCollapse extends React.Component {
           <Panel header="Poll 1" key="1" style={customPanelStyle}>
             <div>{text}</div>
             <br />
+            <Countdown
+              title="Times left"
+              value={deadline}
+              onFinish={onFinish}
+            />
             <CountdownTernary isFinish={deadline} />
           </Panel>
           <Panel header="Poll 2" key="2" style={customPanelStyle}>
@@ -59,7 +67,6 @@ class ResultCollapse extends React.Component {
               title="Times left"
               value={deadline}
               onFinish={onFinish}
-              isFinish={true}
             />
           </Panel>
           <Panel header="Poll 3" key="3" style={customPanelStyle}>
