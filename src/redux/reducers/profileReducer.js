@@ -8,6 +8,12 @@ const initialState = {
 
 export default function(state = initialState, action) {
   switch (action.type) {
+    case "login":
+      return {
+        ...state,
+        ...action.payload,
+        isAuthenticated: true
+      };
     default:
       return state;
   }
