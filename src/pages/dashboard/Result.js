@@ -4,7 +4,9 @@ import LogoMini from "../../assets/logos/thumbpoll-logo-mini.png";
 import NavbarDashboard from "../../components/dashboard/NavbarAfterLogin";
 import ResultCollapse from "../../components/dashboard/Collapse";
 import { Layout, Menu, Icon } from "antd";
-import { Link } from "react-router-dom";
+import { Link, Redirect, withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import { login } from "../../redux/actions/profileAction";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -18,7 +20,9 @@ class PollResult extends React.Component {
   };
 
   render() {
-    return (
+    return !this.props.isAuthenticated ? (
+      <Redirect to="/login" />
+    ) : (
       <div
         style={{
           width: 480,
@@ -84,4 +88,11 @@ class PollResult extends React.Component {
   }
 }
 
-export default PollResult;
+const mapStateToProps = store => ({
+  isAuthenticated: store.profile.isAuthenticated
+});
+
+export default connect(
+  mapStateToProps,
+  { login }
+)(withRouter(PollResult));
