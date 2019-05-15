@@ -4,6 +4,8 @@ import SignWith from "../../components/home/SignWith";
 import Logo from "../../assets/logos/thumbpoll-logo.png";
 import { Button, Form } from "antd";
 import { Link } from "react-router-dom";
+// import { connect } from "react-redux";
+// import login from "../../redux/actions/login";
 
 export class Login extends Component {
   state = {
@@ -78,3 +80,7 @@ export class Login extends Component {
 }
 
 export default Login;
+// connect(
+//   null,
+//   { login }
+// )(Login);
