@@ -1,6 +1,8 @@
 import React from "react";
-
 import { Form, Input, Icon, Checkbox, Button } from "antd";
+import { registerUser } from "../../redux/actions/register";
+import { connect } from "react-redux";
+import { withRouter, Redirect } from "react-router-dom";
 
 const styles = {
   form: {
@@ -16,10 +18,11 @@ const styles = {
 class RegistrationForm extends React.Component {
   state = {
     confirmDirty: false,
-    yourName: "",
+    fullName: "",
     email: "",
     password: "",
-    confirmPassword: ""
+    confirmPassword: "",
+    isSuccess: false
   };
 
   handleSubmit = e => {
@@ -27,6 +30,21 @@ class RegistrationForm extends React.Component {
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
         console.log("Received values of form: ", values);
+        if (
+          this.state.fullName &&
+          this.state.email &&
+          this.state.password &&
+          this.state.confirmPassword
+        ) {
+          this.props.registerUser({
+            fullName: this.state.fullName,
+            email: this.state.email,
+            password: this.state.password,
+            confirmPassword: this.state.confirmPassword
+          });
+        } else {
+          console.error("One of the register fields are not entered yet");
+        }
       }
     });
   };
@@ -88,7 +106,9 @@ class RegistrationForm extends React.Component {
       }
     };
 
-    return (
+    return this.state.isSuccess === true ? (
+      <Redirect to="/login" />
+    ) : (
       <div>
         <Form
           style={{
@@ -109,7 +129,7 @@ class RegistrationForm extends React.Component {
                   <Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />
                 }
                 placeholder="Your Name"
-                name="yourName"
+                name="fullName"
                 onChange={this.handleChange}
               />
             )}
@@ -190,7 +210,7 @@ class RegistrationForm extends React.Component {
               valuePropName: "checked"
             })(
               <Checkbox>
-                I have read the <a href="test">agreement</a>
+                I have read the <a href="#">agreement</a>
               </Checkbox>
             )}
           </Form.Item>
@@ -209,4 +229,13 @@ const WrappedRegistrationForm = Form.create({ name: "register" })(
   RegistrationForm
 );
 
-export default WrappedRegistrationForm;
+const mapStateToProps = state => {
+  return {
+    state
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { registerUser }
+)(withRouter(WrappedRegistrationForm));
