@@ -7,8 +7,8 @@ import { connect } from "react-redux";
 const columns = [
   {
     title: "Poll list",
-    dataIndex: "poll",
-    key: "poll",
+    dataIndex: "title",
+    key: "title",
     width: "65%",
     render: text => <a href="#link">{text}</a>
   },
@@ -62,20 +62,21 @@ class PollTable extends React.Component {
   };
 
   render() {
-    const { data } = this.state;
-    const pollList = data.length ? (
-      data.map(dataItem => {
-        return <div key={dataItem.id}>{dataItem.title}</div>;
-      })
-    ) : (
-      <div>No Polls yet</div>
-    );
+    const { data, activeIndex, visible } = this.state;
+    const { pollList } = this.props;
+    // const pollList = data.length ? (
+    //   data.map(dataItem => {
+    //     return <div key={dataItem.id}>{dataItem.title}</div>;
+    //   })
+    // ) : (
+    //   <div>No Polls yet</div>
+    // );
 
     return (
       <div>
         <Table
           columns={columns}
-          dataSource={this.state.data}
+          dataSource={pollList}
           onRow={(record, rowIndex) => {
             return {
               onClick: event => {
@@ -87,34 +88,34 @@ class PollTable extends React.Component {
           }}
         />
         <Modal
-          title="Basic Modal"
-          visible={this.state.visible}
+          title=""
+          visible={visible}
           onOk={this.handleOk}
           onCancel={this.handleCancel}
         >
-          <p>{pollList}</p>
-          {/* <RadioGroup>
-            {this.state.data[this.state.activeIndex].option.map(
-              (data, index) => (
+          {/* <h5>{pollList[activeIndex]}</h5> */}
+          <RadioGroup>
+            {pollList[activeIndex] &&
+              pollList[activeIndex].options &&
+              pollList[activeIndex].options.map((data, index) => (
                 <Fragment key={index}>
                   <Radio value={data.description}>{data.description}</Radio>
                   <br />
                   <br />
                 </Fragment>
-              )
-            )}
-          </RadioGroup> */}
+              ))}
+          </RadioGroup>
         </Modal>
       </div>
     );
   }
 }
 
-// const mapStateToProps = state => ({
-
-// })
+const mapStateToProps = store => ({
+  pollList: store.polls.pollList
+});
 
 export default connect(
-  null,
+  mapStateToProps,
   { fetchPoll }
 )(PollTable);

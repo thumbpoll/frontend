@@ -7,9 +7,9 @@ const fetchPoll = () => dispatch => {
       dispatch(
         {
           type: "FETCH_POLL",
-          payload: res.data
+          payload: res.data.polls
         },
-        console.log(res)
+        console.log(res.data.polls)
       )
     )
     .catch(err => console.log(err));
