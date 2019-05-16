@@ -56,9 +56,9 @@ class NavbarDashboard extends React.Component {
           <Menu.Item key="polls">
             <Link to="/poll">Polls</Link>
           </Menu.Item>
-          <Menu.Item key="participants">
+          {/* <Menu.Item key="participants">
             <Link to="/participants">Participants</Link>
-          </Menu.Item>
+          </Menu.Item> */}
           <Menu.Item key="results">
             <Link to="/results">Results</Link>
           </Menu.Item>
