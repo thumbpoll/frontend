@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Modal, Form, Input, Icon, Radio, DatePicker } from "antd";
+import { Button, Modal, Form, Input, Icon, DatePicker } from "antd";
 import moment from "moment";
 class DateRange extends React.Component {
   state = {
@@ -165,9 +165,9 @@ const CreatePollForm = Form.create({ name: "form_in_modal" })(
           visible={visible}
           title="Create a Poll"
           okText="Create"
+          width="475px"
           onCancel={onCancel}
           onOk={onCreate}
-          style={{ width: 480 }}
         >
           <div layout="vertical">
             <Form.Item label="Title">
@@ -193,15 +193,6 @@ const CreatePollForm = Form.create({ name: "form_in_modal" })(
               </Form.Item>
               <Form.Item {...formItemLayoutWithOutLabel} />
             </Form>
-            <Form.Item className="collection-create-form_last-form-item">
-              {getFieldDecorator("modifier", {
-                initialValue: "public"
-              })(
-                <Radio.Group>
-                  <Radio value="private">Private</Radio>
-                </Radio.Group>
-              )}
-            </Form.Item>
           </div>
           <DateRange />
         </Modal>

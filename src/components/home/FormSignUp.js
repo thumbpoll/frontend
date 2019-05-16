@@ -210,7 +210,7 @@ class RegistrationForm extends React.Component {
               valuePropName: "checked"
             })(
               <Checkbox>
-                I have read the <a href="#">agreement</a>
+                I have read the <a href="#link">agreement</a>
               </Checkbox>
             )}
           </Form.Item>
