@@ -1,6 +1,8 @@
 import React, { Fragment } from "react";
 import { Table, Divider, Modal, Radio } from "antd";
 import RadioGroup from "antd/lib/radio/group";
+import fetchPoll from "../../redux/actions/polls";
+import { connect } from "react-redux";
 
 const columns = [
   {
@@ -24,60 +26,12 @@ const columns = [
 ];
 
 class PollTable extends React.Component {
+  componentDidMount() {
+    this.props.fetchPoll();
+  }
   state = {
     visible: false,
-    data: [
-      {
-        key: "1",
-        poll: "Sobat Sebat mau kumpul dimana malam ini?",
-        option: [
-          {
-            id: 1,
-            description: "McD"
-          },
-          {
-            id: 2,
-            description: "Starbucks"
-          }
-        ]
-      },
-      {
-        key: "2",
-        poll: "Poll 2",
-        option: [
-          {
-            id: 1,
-            description: "option 1"
-          },
-          {
-            id: 2,
-            description: "option 2"
-          },
-          {
-            id: 3,
-            description: "option 3"
-          }
-        ]
-      },
-      {
-        key: 3,
-        poll: "Poll 3",
-        option: [
-          {
-            id: 1,
-            description: "option 1"
-          },
-          {
-            id: 2,
-            description: "option 2"
-          },
-          {
-            id: 3,
-            description: "option 3"
-          }
-        ]
-      }
-    ],
+    data: [],
     activeIndex: 0
   };
 
@@ -108,6 +62,15 @@ class PollTable extends React.Component {
   };
 
   render() {
+    const { data } = this.state;
+    const pollList = data.length ? (
+      data.map(dataItem => {
+        return <div key={dataItem.id}>{dataItem.title}</div>;
+      })
+    ) : (
+      <div>No Polls yet</div>
+    );
+
     return (
       <div>
         <Table
@@ -129,8 +92,8 @@ class PollTable extends React.Component {
           onOk={this.handleOk}
           onCancel={this.handleCancel}
         >
-          <p>{this.state.data[this.state.activeIndex].poll}</p>
-          <RadioGroup>
+          <p>{pollList}</p>
+          {/* <RadioGroup>
             {this.state.data[this.state.activeIndex].option.map(
               (data, index) => (
                 <Fragment key={index}>
@@ -140,11 +103,18 @@ class PollTable extends React.Component {
                 </Fragment>
               )
             )}
-          </RadioGroup>
+          </RadioGroup> */}
         </Modal>
       </div>
     );
   }
 }
 
-export default PollTable;
+// const mapStateToProps = state => ({
+
+// })
+
+export default connect(
+  null,
+  { fetchPoll }
+)(PollTable);
