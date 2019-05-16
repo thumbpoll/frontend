@@ -62,7 +62,7 @@ class PollTable extends React.Component {
   };
 
   render() {
-    const { data, activeIndex, visible } = this.state;
+    const { activeIndex, visible } = this.state;
     const { pollList } = this.props;
     // const pollList = data.length ? (
     //   data.map(dataItem => {
@@ -90,10 +90,11 @@ class PollTable extends React.Component {
         <Modal
           title=""
           visible={visible}
+          width="475px"
           onOk={this.handleOk}
           onCancel={this.handleCancel}
         >
-          {/* <h5>{pollList[activeIndex]}</h5> */}
+          <h2>{pollList[activeIndex] && pollList[activeIndex].title}</h2>
           <RadioGroup>
             {pollList[activeIndex] &&
               pollList[activeIndex].options &&
