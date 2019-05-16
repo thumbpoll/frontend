@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { Table, Divider, Modal, Radio } from "antd";
+import { Table, Modal, Radio } from "antd";
 import RadioGroup from "antd/lib/radio/group";
 import fetchPoll from "../../redux/actions/polls";
 import { connect } from "react-redux";
@@ -17,8 +17,8 @@ const columns = [
     key: "action",
     render: (text, record) => (
       <span>
-        <a href="#link">Share</a>
-        <Divider type="vertical" />
+        {/* <a href="#link">Share</a>
+        <Divider type="vertical" /> */}
         <a href="#link">Edit</a>
       </span>
     )
