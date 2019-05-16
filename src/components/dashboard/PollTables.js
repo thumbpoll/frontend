@@ -11,18 +11,18 @@ const columns = [
     key: "title",
     width: "65%",
     render: text => <a href="#link">{text}</a>
-  },
-  {
-    title: "Action",
-    key: "action",
-    render: (text, record) => (
-      <span>
-        {/* <a href="#link">Share</a>
-        <Divider type="vertical" /> */}
-        <a href="#link">Edit</a>
-      </span>
-    )
   }
+  // {
+  //   title: "Action",
+  //   key: "action",
+  //   render: (text, record) => (
+  //     <span>
+  //       {/* <a href="#link">Share</a>
+  //       <Divider type="vertical" /> */}
+  //       <a href="#link">Edit</a>
+  //     </span>
+  //   )
+  // }
 ];
 
 class PollTable extends React.Component {
