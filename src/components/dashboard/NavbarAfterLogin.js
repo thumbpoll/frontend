@@ -25,7 +25,13 @@ class NavbarDashboard extends React.Component {
       </Menu>
     );
     return (
-      <div style={{ display: "flex", justifyContent: "space-between" }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center"
+        }}
+      >
         <Menu
           onClick={this.handleClick}
           selectedKeys={[this.state.current]}
@@ -44,7 +50,11 @@ class NavbarDashboard extends React.Component {
         <Dropdown overlay={menuAvatar} trigger={["click"]}>
           <a className="ant-dropdown-link" href="#link">
             <Avatar
-              style={{ backgroundColor: "#87d068", margin: "10px 10px" }}
+              style={{
+                backgroundColor: "#87d068",
+                margin: "10px 10px",
+                marginRight: "30px"
+              }}
               icon="user"
             />
           </a>
