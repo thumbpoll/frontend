@@ -65,10 +65,10 @@ class PollResult extends React.Component {
                   <span>Create Poll</span>
                 </Link>
               </Menu.Item>
-              <Menu.Item key="2">
+              {/* <Menu.Item key="2">
                 <Icon type="file" />
                 <span>Import</span>
-              </Menu.Item>
+              </Menu.Item> */}
             </Menu>
           </Sider>
           <Layout>
