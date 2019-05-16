@@ -1,6 +1,9 @@
 import React from "react";
 import { Button, Modal, Form, Input, Icon, DatePicker } from "antd";
 import moment from "moment";
+import { connect } from "react-redux";
+import { createPoll } from "../../redux/actions/create";
+
 class DateRange extends React.Component {
   state = {
     startValue: moment(),
@@ -77,6 +80,7 @@ class DateRange extends React.Component {
   }
 }
 
+// MODAL
 let id = 0;
 const CreatePollForm = Form.create({ name: "form_in_modal" })(
   // eslint-disable-next-line
@@ -85,7 +89,7 @@ const CreatePollForm = Form.create({ name: "form_in_modal" })(
       const { form } = this.props;
       // can use data-binding to get
       const keys = form.getFieldValue("keys");
-      // We need at least 1 Option
+      // We need at least one passenger
       if (keys.length === 1) {
         return;
       }
@@ -125,7 +129,7 @@ const CreatePollForm = Form.create({ name: "form_in_modal" })(
           sm: { span: 20, offset: 4 }
         }
       };
-      getFieldDecorator("keys", { initialValue: [1] });
+      getFieldDecorator("keys", { initialValue: [] });
       const keys = getFieldValue("keys");
       const formItems = keys.map((k, index) => (
         <Form.Item
@@ -147,6 +151,7 @@ const CreatePollForm = Form.create({ name: "form_in_modal" })(
             <Input
               placeholder="option"
               style={{ width: "60%", marginRight: 8 }}
+              onChange={this.handleChange}
             />
           )}
           {keys.length > 1 ? (
@@ -178,7 +183,7 @@ const CreatePollForm = Form.create({ name: "form_in_modal" })(
                     message: "Please input the title of Poll!"
                   }
                 ]
-              })(<Input />)}
+              })(<Input onChange={this.handleChange} />)}
             </Form.Item>
             <Form onSubmit={this.handleSubmit}>
               {formItems}
@@ -203,7 +208,9 @@ const CreatePollForm = Form.create({ name: "form_in_modal" })(
 
 class PollModal extends React.Component {
   state = {
-    visible: false
+    visible: false,
+    title: "",
+    option: ""
   };
 
   showModal = () => {
@@ -224,7 +231,24 @@ class PollModal extends React.Component {
       console.log("Received values of form: ", values);
       form.resetFields();
       this.setState({ visible: false });
+      if (this.state.title && this.state.option) {
+        this.props.createPoll({
+          title: this.state.title,
+          option: this.state.option
+        });
+      } else {
+        console.error("One of the create poll fields are not entered yet");
+      }
     });
+  };
+
+  handleChange = e => {
+    this.setState(
+      {
+        [e.target.name]: e.target.value
+      }
+      // console.log(this.state)
+    );
   };
 
   saveFormRef = formRef => {
@@ -248,4 +272,13 @@ class PollModal extends React.Component {
   }
 }
 
-export default PollModal;
+const mapStateToProps = state => {
+  return {
+    state
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { createPoll }
+)(PollModal);
