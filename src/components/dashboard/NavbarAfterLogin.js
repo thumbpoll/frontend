@@ -2,9 +2,23 @@ import React from "react";
 import { Menu, Avatar, Dropdown } from "antd";
 import { Link } from "react-router-dom";
 
+// const logoutUserFromProfile = (profile, dispatch) => {
+//   // only logoutUser if the profile isAuthenticated
+//   profile.isAuthenticated && dispatch(logoutUser(profile));
+// };
+
 class NavbarDashboard extends React.Component {
   state = {
     current: ""
+  };
+
+  logout = event => {
+    event.preventDefault();
+    window.localStorage.clear();
+    // this.props.history.push("/login");
+    fetch("/logout", { method: "POST" })
+      .then(() => window.location.reload())
+      .catch(err => console.log(err));
   };
 
   handleClick = e => {
@@ -20,7 +34,9 @@ class NavbarDashboard extends React.Component {
         <Menu.Item key="0">Profile</Menu.Item>
         <Menu.Divider />
         <Menu.Item key="2">
-          <Link to="/">Log out</Link>
+          <Link to="/" onClick={this.logout}>
+            Log out
+          </Link>
         </Menu.Item>
       </Menu>
     );
