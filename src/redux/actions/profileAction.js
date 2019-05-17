@@ -14,7 +14,7 @@ export const login = data => dispatch => {
           name: res.data.user.fullName
         }
       });
-      message.success("Welcome back", 1);
+      message.success(`Login succeed as ${res.data.user.fullName}`, 1);
     })
     .catch(err => {
       console.log(err);
