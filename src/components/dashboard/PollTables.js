@@ -32,7 +32,8 @@ class PollTable extends React.Component {
   state = {
     visible: false,
     data: [],
-    activeIndex: 0
+    activeIndex: 0,
+    value: ""
   };
 
   showModal = () => {
@@ -44,7 +45,8 @@ class PollTable extends React.Component {
   handleOk = e => {
     console.log(e);
     this.setState({
-      visible: false
+      visible: false,
+      value: this.state.data.description
     });
   };
 
