@@ -64,27 +64,43 @@ class ResultCollapse extends React.Component {
             poll.options.forEach(option => {
               total += option.voters.length;
             });
+            // let percentNumber = 0;
+            // if (poll.options.voters.length !== 0) {
+            //   percentNumber = (
+            //     (poll.options.voters.length / total) *
+            //     100
+            //   ).toFixed(0);
+            // }
+
             return (
               <Panel header={poll.title} key={index} style={customPanelStyle}>
                 <div>
-                  {poll.options.map((option, index) => (
-                    <div key={index}>
-                      <span>{option.description}</span>{" "}
-                      <Progress
-                        percent={parseInt(
-                          (option.voters.length / total) * 100
-                        ).toFixed(0)}
-                        status="active"
-                      />
-                    </div>
-                  ))}
+                  {poll.options.map((option, index) => {
+                    let percentNumber = 0;
+                    if (option.voters.length !== 0) {
+                      percentNumber = (
+                        (option.voters.length / total) *
+                        100
+                      ).toFixed(0);
+                    }
+                    return (
+                      <div key={index}>
+                        <span>{option.description}</span>{" "}
+                        <Progress percent={percentNumber} status="active" />
+                        <p style={{ fontSize: "11px" }}>
+                          votes: {option.voters.length}
+                        </p>
+                      </div>
+                    );
+                  })}
                 </div>
+                <p style={{ fontWeight: "Bold" }}>Total votes: {total}</p>
                 <br />
-                <Countdown
+                {/* <Countdown
                   title="Times left"
                   value={deadline}
                   onFinish={onFinish}
-                />
+                /> */}
                 {/* <CountdownTernary isFinish={deadline} /> */}
               </Panel>
             );
