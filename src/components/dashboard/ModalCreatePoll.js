@@ -3,6 +3,8 @@ import { Button, Modal, Form, Input, Icon, DatePicker } from "antd";
 import moment from "moment";
 import { connect } from "react-redux";
 import { createPoll } from "../../redux/actions/create";
+import { withRouter } from "react-router-dom";
+import axios from "axios";
 
 class DateRange extends React.Component {
   state = {
@@ -138,7 +140,7 @@ const CreatePollForm = Form.create({ name: "form_in_modal" })(
           required={true}
           key={k}
         >
-          {getFieldDecorator(`names[${k}]`, {
+          {getFieldDecorator(`options[${k}]`, {
             validateTrigger: ["onChange", "onBlur"],
             rules: [
               {
@@ -223,22 +225,44 @@ class PollModal extends React.Component {
 
   handleCreate = () => {
     const form = this.formRef.props.form;
-    form.validateFields((err, values) => {
+    form.validateFields(async (err, values) => {
       if (err) {
         return;
+      }
+
+      const postPollsRes = await axios
+        .post(
+          `${process.env.REACT_APP_API_URL}/polls`,
+          { title: values.title },
+          {
+            headers: {
+              Authorization: `Bearer ${window.localStorage.token}`
+            }
+          }
+        )
+        .then(res => res)
+        .catch(err => err);
+
+      if (postPollsRes.status === 200) {
+        values.options.forEach((value, index) => {
+          axios
+            .post(`${process.env.REACT_APP_API_URL}/options`, {
+              description: value,
+              pollId: postPollsRes.data.resultPoll._id
+            })
+            .then(res => {
+              console.log(res);
+              this.props.history.push("/poll");
+            })
+            .catch(err => {
+              console.log(err);
+            });
+        });
       }
 
       console.log("Received values of form: ", values);
       form.resetFields();
       this.setState({ visible: false });
-      if (this.state.title && this.state.option) {
-        this.props.createPoll({
-          title: this.state.title,
-          option: this.state.option
-        });
-      } else {
-        console.error("One of the create poll fields are not entered yet");
-      }
     });
   };
 
@@ -281,4 +305,4 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   { createPoll }
-)(PollModal);
+)(withRouter(PollModal));
