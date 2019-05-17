@@ -1,5 +1,6 @@
 import React from "react";
 import { Collapse, Icon, Progress, Statistic } from "antd";
+import axios from "axios";
 
 const Panel = Collapse.Panel;
 const Countdown = Statistic.Countdown;
@@ -23,14 +24,6 @@ class CountdownTernary extends React.Component {
   }
 }
 
-const text = (
-  <div>
-    <span>Option 1</span> <Progress percent={30} status="active" />
-    <span>Option 2</span> <Progress percent={50} status="active" />
-    <span>Option 3</span> <Progress percent={20} status="active" />
-  </div>
-);
-
 const customPanelStyle = {
   background: "#f7f7f7",
   borderRadius: 4,
@@ -40,44 +33,62 @@ const customPanelStyle = {
 };
 
 class ResultCollapse extends React.Component {
+  state = {
+    polls: []
+  };
+  componentDidMount() {
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/polls`)
+      .then(res => {
+        console.log(res);
+        this.setState({
+          polls: res.data.polls
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
   render() {
     return (
       <div>
         <Collapse
           bordered={false}
-          defaultActiveKey={["1"]}
+          defaultActiveKey={["0"]}
           expandIcon={({ isActive }) => (
             <Icon type="caret-right" rotate={isActive ? 90 : 0} />
           )}
         >
-          <Panel header="Poll 1" key="1" style={customPanelStyle}>
-            <div>{text}</div>
-            <br />
-            <Countdown
-              title="Times left"
-              value={deadline}
-              onFinish={onFinish}
-            />
-            <CountdownTernary isFinish={deadline} />
-          </Panel>
-          <Panel header="Poll 2" key="2" style={customPanelStyle}>
-            <div>{text}</div>
-            <br />
-            <Countdown
-              title="Times left"
-              value={deadline}
-              onFinish={onFinish}
-            />
-          </Panel>
-          <Panel header="Poll 3" key="3" style={customPanelStyle}>
-            <div>{text}</div>
-            <br />
-            <Countdown
-              title="Times left"
-              value={deadline}
-              onFinish={onFinish}
-            />
-          </Panel>
+          {this.state.polls.map((poll, index) => {
+            let total = 0;
+            poll.options.forEach(option => {
+              total += option.voters.length;
+            });
+            return (
+              <Panel header={poll.title} key={index} style={customPanelStyle}>
+                <div>
+                  {poll.options.map((option, index) => (
+                    <div key={index}>
+                      <span>{option.description}</span>{" "}
+                      <Progress
+                        percent={parseInt(
+                          (option.voters.length / total) * 100
+                        ).toFixed(0)}
+                        status="active"
+                      />
+                    </div>
+                  ))}
+                </div>
+                <br />
+                <Countdown
+                  title="Times left"
+                  value={deadline}
+                  onFinish={onFinish}
+                />
+                {/* <CountdownTernary isFinish={deadline} /> */}
+              </Panel>
+            );
+          })}
         </Collapse>
       </div>
     );
