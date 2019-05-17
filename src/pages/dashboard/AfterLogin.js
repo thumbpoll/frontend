@@ -1,14 +1,13 @@
 import React from "react";
-import Logo from "../../assets/logos/thumbpoll-logo.png";
-import LogoMini from "../../assets/logos/thumbpoll-logo-mini.png";
 import NavbarDashboard from "../../components/dashboard/NavbarAfterLogin";
 import PollModal from "../../components/dashboard/ModalCreatePoll";
-import { Layout, Menu, Icon } from "antd";
-import { Link, Redirect, withRouter } from "react-router-dom";
+import { Layout } from "antd";
+import { Redirect, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { login } from "../../redux/actions/profileAction";
+import { Emoji } from "emoji-mart";
 
-const { Header, Content, Footer, Sider } = Layout;
+const { Header, Content, Footer } = Layout;
 
 class Dashboard extends React.Component {
   state = {
@@ -23,84 +22,51 @@ class Dashboard extends React.Component {
     return !this.props.isAuthenticated ? (
       <Redirect to="/login" />
     ) : (
-      <div
-        style={{
-          width: 480,
-          margin: "0 auto"
-        }}
-      >
-        <Layout style={{ minHeight: "100vh" }}>
-          <Sider
-            collapsible
-            collapsed={this.state.collapsed}
-            onCollapse={this.onCollapse}
-          >
-            <div className="logo" style={{ height: "60px" }}>
-              {this.state.collapsed ? (
-                <img
-                  src={LogoMini}
-                  alt="Logo"
+      (this.props.name,
+      (
+        <div
+          style={{
+            width: 480,
+            margin: "0 auto"
+          }}
+        >
+          <Layout className="layout" style={{ minHeight: "100vh" }}>
+            <Layout>
+              <Header style={{ background: "#fff", padding: 0 }}>
+                <NavbarDashboard />
+              </Header>
+              <Content style={{ margin: "0 16px", paddingTop: "15px" }}>
+                <div
                   style={{
-                    height: "60px",
-                    width: "auto",
-                    margin: "5px 10px"
+                    padding: 24,
+                    background: "#fff",
+                    minHeight: 360,
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    flexDirection: "column"
                   }}
-                />
-              ) : (
-                <img
-                  src={Logo}
-                  alt="Logo"
-                  style={{
-                    height: "60px",
-                    width: "auto",
-                    margin: "5px 10px 0 20px"
-                  }}
-                />
-              )}
-            </div>
-            <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
-              <Menu.Item key="1">
-                <Link to="/dashboard">
-                  <Icon type="edit" />
-                  <span>Create Poll</span>
-                </Link>
-              </Menu.Item>
-              {/* <Menu.Item key="2">
-                <Link to="/">
-                  <Icon type="file" />
-                  <span>Import</span>
-                </Link>
-              </Menu.Item> */}
-            </Menu>
-          </Sider>
-          <Layout>
-            <Header style={{ background: "#fff", padding: 0 }}>
-              <NavbarDashboard />
-            </Header>
-            <Content style={{ margin: "0 16px", paddingTop: "15px" }}>
-              <div
-                style={{
-                  padding: 24,
-                  background: "#fff",
-                  minHeight: 360,
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center"
-                }}
-              >
-                <PollModal />
-              </div>
-            </Content>
-            <Footer style={{ textAlign: "center" }}>Thumbpoll © 2019</Footer>
+                >
+                  <h1>
+                    Welcome back, {this.props.name}{" "}
+                    <Emoji emoji=":blush:" size={17} />
+                  </h1>
+                  <br />
+                  <PollModal />
+                </div>
+              </Content>
+              <Footer style={{ textAlign: "center" }}>Thumbpoll © 2019</Footer>
+            </Layout>
           </Layout>
-        </Layout>
-      </div>
+        </div>
+      ))
     );
   }
 }
 
 const mapStateToProps = store => ({
-  isAuthenticated: store.profile.isAuthenticated
+  isAuthenticated: store.profile.isAuthenticated,
+  name: store.profile.name
 });
 
 export default connect(

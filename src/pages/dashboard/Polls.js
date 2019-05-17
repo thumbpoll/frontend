@@ -1,14 +1,12 @@
 import React from "react";
-import Logo from "../../assets/logos/thumbpoll-logo.png";
-import LogoMini from "../../assets/logos/thumbpoll-logo-mini.png";
 import NavbarDashboard from "../../components/dashboard/NavbarAfterLogin";
-import { Layout, Menu, Icon } from "antd";
+import { Layout } from "antd";
 import PollTable from "../../components/dashboard/PollTables";
-import { Link, Redirect, withRouter } from "react-router-dom";
+import { Redirect, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { login } from "../../redux/actions/profileAction";
 
-const { Header, Content, Footer, Sider } = Layout;
+const { Header, Content, Footer } = Layout;
 
 class Poll extends React.Component {
   state = {
@@ -30,47 +28,6 @@ class Poll extends React.Component {
         }}
       >
         <Layout style={{ minHeight: "100vh" }}>
-          <Sider
-            collapsible
-            collapsed={this.state.collapsed}
-            onCollapse={this.onCollapse}
-          >
-            <div className="logo" style={{ height: "60px" }}>
-              {this.state.collapsed ? (
-                <img
-                  src={LogoMini}
-                  alt="Logo"
-                  style={{
-                    height: "60px",
-                    width: "auto",
-                    margin: "5px 10px"
-                  }}
-                />
-              ) : (
-                <img
-                  src={Logo}
-                  alt="Logo"
-                  style={{
-                    height: "60px",
-                    width: "auto",
-                    margin: "5px 10px 0 20px"
-                  }}
-                />
-              )}
-            </div>
-            <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
-              <Menu.Item key="1">
-                <Link to="/dashboard">
-                  <Icon type="edit" />
-                  <span>Create Poll</span>
-                </Link>
-              </Menu.Item>
-              {/* <Menu.Item key="2">
-                <Icon type="file" />
-                <span>Import</span>
-              </Menu.Item> */}
-            </Menu>
-          </Sider>
           <Layout>
             <Header style={{ background: "#fff", padding: 0 }}>
               <NavbarDashboard />
