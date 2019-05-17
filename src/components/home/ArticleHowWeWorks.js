@@ -1,4 +1,5 @@
 import React from "react";
+import Fade from "react-reveal/Fade";
 import Image1 from "../../assets/images/question.png";
 import Image2 from "../../assets/images/response.png";
 import Image3 from "../../assets/images/instant-result.png";
@@ -39,15 +40,17 @@ class ArticlesWorks extends React.Component {
               textAlign: "center"
             }}
           >
-            <img
-              src={article.image}
-              alt="how-we-work"
-              style={{ height: "auto", width: "150px" }}
-            />
-            <h4>{article.title}</h4>
-            <p style={{ fontSize: "12px", color: "black" }}>
-              {article.description}
-            </p>
+            <Fade bottom>
+              <img
+                src={article.image}
+                alt="how-we-work"
+                style={{ height: "auto", width: "150px" }}
+              />
+              <h4>{article.title}</h4>
+              <p style={{ fontSize: "12px", color: "black" }}>
+                {article.description}
+              </p>
+            </Fade>
           </div>
         </div>
       );

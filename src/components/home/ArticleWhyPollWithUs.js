@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Fade from "react-reveal/Fade";
 import Image1 from "../../assets/images/connect.png";
 import Image2 from "../../assets/images/accessible.png";
 import Image3 from "../../assets/images/help.png";
@@ -44,12 +45,14 @@ class ArticlesUs extends Component {
             marginBottom: "20px"
           }}
         >
-          <h4 style={{ padding: "25px 25px" }}>{article.title}</h4>
-          <img
-            src={article.image}
-            alt="poll-with-us"
-            style={{ width: "auto", height: "165px" }}
-          />
+          <Fade left>
+            <h4 style={{ padding: "25px 25px" }}>{article.title}</h4>
+            <img
+              src={article.image}
+              alt="poll-with-us"
+              style={{ width: "auto", height: "165px" }}
+            />
+          </Fade>
         </div>
       ) : (
         <div
@@ -63,12 +66,14 @@ class ArticlesUs extends Component {
             marginBottom: "20px"
           }}
         >
-          <img
-            src={article.image}
-            alt="poll-with-us"
-            style={{ width: "auto", height: "165px" }}
-          />
-          <h4 style={{ padding: "25px 25px" }}>{article.title}</h4>
+          <Fade right>
+            <img
+              src={article.image}
+              alt="poll-with-us"
+              style={{ width: "auto", height: "165px" }}
+            />
+            <h4 style={{ padding: "25px 25px" }}>{article.title}</h4>
+          </Fade>
         </div>
       );
     });
