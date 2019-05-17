@@ -1,6 +1,7 @@
 import React from "react";
-import { Menu, Avatar, Dropdown, message } from "antd";
+import { Menu, Avatar, Dropdown, message, Icon } from "antd";
 import { Link } from "react-router-dom";
+import LogoMini from "../../assets/logos/thumbpoll-logo-mini.png";
 
 // const logoutUserFromProfile = (profile, dispatch) => {
 //   // only logoutUser if the profile isAuthenticated
@@ -51,19 +52,42 @@ class NavbarDashboard extends React.Component {
           alignItems: "center"
         }}
       >
+        <div className="logo" style={{ height: "60px" }}>
+          <img
+            src={LogoMini}
+            alt="Logo"
+            style={{
+              height: "50px",
+              width: "auto",
+              margin: "5px 10px"
+            }}
+          />
+        </div>
         <Menu
           onClick={this.handleClick}
           selectedKeys={[this.state.current]}
           mode="horizontal"
         >
+          <Menu.Item key="dashboard">
+            <Link to="/dashboard">
+              <Icon type="edit" />
+              <span>Create Poll</span>
+            </Link>
+          </Menu.Item>
           <Menu.Item key="polls">
-            <Link to="/poll">Polls</Link>
+            <Link to="/poll">
+              <Icon type="notification" />
+              <span>Polls</span>
+            </Link>
           </Menu.Item>
           {/* <Menu.Item key="participants">
             <Link to="/participants">Participants</Link>
           </Menu.Item> */}
           <Menu.Item key="results">
-            <Link to="/results">Results</Link>
+            <Link to="/results">
+              <Icon type="pie-chart" />
+              <span>Results</span>
+            </Link>
           </Menu.Item>
         </Menu>
         <Dropdown overlay={menuAvatar} trigger={["click"]}>
