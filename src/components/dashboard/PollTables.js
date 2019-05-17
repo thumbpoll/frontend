@@ -3,6 +3,8 @@ import { Table, Modal, Radio } from "antd";
 import RadioGroup from "antd/lib/radio/group";
 import fetchPoll from "../../redux/actions/polls";
 import { connect } from "react-redux";
+import axios from "axios";
+import { withRouter } from "react-router-dom";
 
 const columns = [
   {
@@ -33,7 +35,7 @@ class PollTable extends React.Component {
     visible: false,
     data: [],
     activeIndex: 0,
-    value: ""
+    optionId: ""
   };
 
   showModal = () => {
@@ -45,9 +47,27 @@ class PollTable extends React.Component {
   handleOk = e => {
     console.log(e);
     this.setState({
-      visible: false,
-      value: this.state.data.description
+      visible: false
     });
+    axios
+      .put(
+        `${process.env.REACT_APP_API_URL}/polls/vote/${
+          this.props.pollList[this.state.activeIndex]._id
+        }`,
+        { optionId: this.state.optionId },
+        {
+          headers: {
+            Authorization: `Bearer ${window.localStorage.token}`
+          }
+        }
+      )
+      .then(res => {
+        console.log(res);
+        this.props.history.push("/results");
+      })
+      .then(err => {
+        console.log(err);
+      });
   };
 
   handleCancel = e => {
@@ -60,6 +80,12 @@ class PollTable extends React.Component {
   setActiveIndex = index => {
     this.setState({
       activeIndex: index
+    });
+  };
+
+  onClickRadio = e => {
+    this.setState({
+      optionId: e.target.value
     });
   };
 
@@ -102,7 +128,9 @@ class PollTable extends React.Component {
               pollList[activeIndex].options &&
               pollList[activeIndex].options.map((data, index) => (
                 <Fragment key={index}>
-                  <Radio value={data.description}>{data.description}</Radio>
+                  <Radio value={data._id} onClick={this.onClickRadio}>
+                    {data.description}
+                  </Radio>
                   <br />
                   <br />
                 </Fragment>
@@ -121,4 +149,4 @@ const mapStateToProps = store => ({
 export default connect(
   mapStateToProps,
   { fetchPoll }
-)(PollTable);
+)(withRouter(PollTable));
