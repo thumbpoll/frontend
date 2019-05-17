@@ -68,13 +68,13 @@ class ResultCollapse extends React.Component {
                         <span>{option.description}</span>{" "}
                         <Progress percent={percentNumber} status="active" />
                         <p style={{ fontSize: "11px" }}>
-                          votes: {option.voters.length}
+                          Polls: {option.voters.length}
                         </p>
                       </div>
                     );
                   })}
                 </div>
-                <p style={{ fontWeight: "Bold" }}>Total votes: {total}</p>
+                <p style={{ fontWeight: "Bold" }}>Total polls: {total}</p>
                 <br />
                 {/* <Countdown
                   title="Times left"
