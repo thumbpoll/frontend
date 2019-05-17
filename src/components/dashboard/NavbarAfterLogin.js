@@ -1,5 +1,5 @@
 import React from "react";
-import { Menu, Avatar, Dropdown } from "antd";
+import { Menu, Avatar, Dropdown, message } from "antd";
 import { Link } from "react-router-dom";
 
 // const logoutUserFromProfile = (profile, dispatch) => {
@@ -17,7 +17,10 @@ class NavbarDashboard extends React.Component {
     window.localStorage.clear();
     // this.props.history.push("/login");
     fetch("/logout", { method: "POST" })
-      .then(() => window.location.reload())
+      .then(() => {
+        message.success("See you next time", 1);
+        window.location.reload();
+      })
       .catch(err => console.log(err));
   };
 

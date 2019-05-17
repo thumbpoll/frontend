@@ -1,4 +1,5 @@
 import axios from "axios";
+import { message } from "antd";
 
 export const registerUserBegin = () => ({
   type: "REGISTER_USER_BEGIN"
@@ -30,11 +31,13 @@ export const registerUser = payload => {
         console.log("test2");
         console.info("response:", response);
         dispatch(registerUserSuccess(response));
+        message.success("Registration success");
         return response;
       })
       .catch(error => {
         console.error("error: ", error);
         dispatch(registerUserError(error));
+        message.error("Registration failed");
       });
   };
 };

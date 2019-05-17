@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { Table, Modal, Radio } from "antd";
+import { Table, Modal, Radio, message } from "antd";
 import RadioGroup from "antd/lib/radio/group";
 import fetchPoll from "../../redux/actions/polls";
 import { connect } from "react-redux";
@@ -62,10 +62,12 @@ class PollTable extends React.Component {
         }
       )
       .then(res => {
+        message.success("Vote success", 1);
         console.log(res);
         this.props.history.push("/results");
       })
-      .then(err => {
+      .catch(err => {
+        message.error("Vote failed", 1);
         console.log(err);
       });
   };

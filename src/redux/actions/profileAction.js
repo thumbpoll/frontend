@@ -1,4 +1,5 @@
 import axios from "axios";
+import { message } from "antd";
 
 export const login = data => dispatch => {
   axios
@@ -13,8 +14,10 @@ export const login = data => dispatch => {
           name: res.data.user.fullName
         }
       });
+      message.success("Welcome back", 1);
     })
     .catch(err => {
       console.log(err);
+      message.error("Login failed", 1);
     });
 };
