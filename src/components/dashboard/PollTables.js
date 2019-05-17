@@ -62,12 +62,14 @@ class PollTable extends React.Component {
         }
       )
       .then(res => {
-        message.success("Vote success", 1);
-        console.log(res);
-        this.props.history.push("/results");
+        if (res.data.data) {
+          message.success(res.data.message, 1);
+          this.props.history.push("/results");
+        } else {
+          message.error(res.data.message, 1);
+        }
       })
       .catch(err => {
-        message.error("Vote failed", 1);
         console.log(err);
       });
   };
