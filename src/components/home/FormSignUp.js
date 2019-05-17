@@ -42,6 +42,7 @@ class RegistrationForm extends React.Component {
             password: this.state.password,
             confirmPassword: this.state.confirmPassword
           });
+          this.props.history.push("/login");
         } else {
           console.error("One of the register fields are not entered yet");
         }
