@@ -1,28 +1,8 @@
 import React from "react";
-import { Collapse, Icon, Progress, Statistic } from "antd";
+import { Collapse, Icon, Progress } from "antd";
 import axios from "axios";
 
 const Panel = Collapse.Panel;
-const Countdown = Statistic.Countdown;
-const time = 1000 * 60 * 60 * 0 * 1 + 5000;
-const deadline = Date.now() + time;
-function onFinish() {
-  console.log("finished!");
-}
-
-const CountdownRunning = () => {
-  return <Countdown title="Times left" value={deadline} onFinish={onFinish} />;
-};
-
-const CountdownFinish = () => {
-  return <Progress type="circle" percent={100} format={() => "Done"} />;
-};
-
-class CountdownTernary extends React.Component {
-  render() {
-    return time === onFinish ? <CountdownRunning /> : <CountdownFinish />;
-  }
-}
 
 const customPanelStyle = {
   background: "#f7f7f7",

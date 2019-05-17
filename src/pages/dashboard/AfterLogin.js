@@ -3,7 +3,7 @@ import Logo from "../../assets/logos/thumbpoll-logo.png";
 import LogoMini from "../../assets/logos/thumbpoll-logo-mini.png";
 import NavbarDashboard from "../../components/dashboard/NavbarAfterLogin";
 import PollModal from "../../components/dashboard/ModalCreatePoll";
-import { Layout, Menu, Empty, Icon } from "antd";
+import { Layout, Menu, Icon } from "antd";
 import { Link, Redirect, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { login } from "../../redux/actions/profileAction";
@@ -78,15 +78,17 @@ class Dashboard extends React.Component {
               <NavbarDashboard />
             </Header>
             <Content style={{ margin: "0 16px", paddingTop: "15px" }}>
-              <div style={{ padding: 24, background: "#fff", minHeight: 360 }}>
-                <Empty
-                  image="https://gw.alipayobjects.com/mdn/miniapp_social/afts/img/A*pevERLJC9v0AAAAAAAAAAABjAQAAAQ/original"
-                  imageStyle={{
-                    height: 60
-                  }}
-                >
-                  <PollModal />
-                </Empty>
+              <div
+                style={{
+                  padding: 24,
+                  background: "#fff",
+                  minHeight: 360,
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center"
+                }}
+              >
+                <PollModal />
               </div>
             </Content>
             <Footer style={{ textAlign: "center" }}>Thumbpoll © 2019</Footer>
