@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Modal, Form, Input, Icon, DatePicker } from "antd";
+import { Button, Modal, Form, Input, Icon, DatePicker, message } from "antd";
 import moment from "moment";
 import { connect } from "react-redux";
 import { createPoll } from "../../redux/actions/create";
@@ -201,7 +201,7 @@ const CreatePollForm = Form.create({ name: "form_in_modal" })(
               <Form.Item {...formItemLayoutWithOutLabel} />
             </Form>
           </div>
-          <DateRange />
+          {/* <DateRange /> */}
         </Modal>
       );
     }
@@ -240,16 +240,24 @@ class PollModal extends React.Component {
             }
           }
         )
-        .then(res => res)
+        .then(res => res, message.success("Poll created", 1))
         .catch(err => err);
 
       if (postPollsRes.status === 200) {
         values.options.forEach((value, index) => {
           axios
-            .post(`${process.env.REACT_APP_API_URL}/options`, {
-              description: value,
-              pollId: postPollsRes.data.resultPoll._id
-            })
+            .post(
+              `${process.env.REACT_APP_API_URL}/options`,
+              {
+                description: value,
+                pollId: postPollsRes.data.resultPoll._id
+              },
+              {
+                headers: {
+                  Authorization: `Bearer ${window.localStorage.token}`
+                }
+              }
+            )
             .then(res => {
               console.log(res);
               this.props.history.push("/poll");
