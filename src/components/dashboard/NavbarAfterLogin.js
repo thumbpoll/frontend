@@ -71,7 +71,7 @@ class NavbarDashboard extends React.Component {
           <Menu.Item key="dashboard">
             <Link to="/dashboard">
               <Icon type="edit" />
-              <span>Create Poll</span>
+              <span>Create</span>
             </Link>
           </Menu.Item>
           <Menu.Item key="polls">
